@@ -19,6 +19,6 @@ float blockNoise(vec2 uv)
 
 void main(void){
     vec2 uv = gl_FragCoord.xy / resolution.xy;
-    float noise = blockNoise(uv);
+    float noise = snoise(uv*_Tile) * 0.5 + 0.5;
     gl_FragColor = vec4(noise,noise,noise,1.0);
 }

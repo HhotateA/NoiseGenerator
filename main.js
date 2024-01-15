@@ -5,6 +5,9 @@ async function main() {
     drawAsync("preview1","shaders/v.glsl","shaders/seed.glsl");
     drawAsync("preview2","shaders/v.glsl","shaders/simpleNoise.glsl");
     drawAsync("preview3","shaders/v.glsl","shaders/blockNoise.glsl");
+    drawAsync("preview4","shaders/v.glsl","shaders/perlinNoise.glsl","shaders/webgl-noise-master/classicnoise2D.glsl");
+    drawAsync("preview5","shaders/v.glsl","shaders/simplexNoise.glsl","shaders/webgl-noise-master/noise2D.glsl");
+    drawAsync("preview6","shaders/v.glsl","shaders/cellular2D.glsl","shaders/webgl-noise-master/cellular2x2x2.glsl");
 }
 
 // https://developer.mozilla.org/ja/docs/Web/API/WebGLShader
@@ -20,13 +23,19 @@ function createShader(gl, sourceCode, type) {
     return shader;
 }
 
-async function drawAsync(canvasId,vsPath,fsPath){
+async function drawAsync(canvasId,vsPath,fsPath,libPath = ""){
     const canvas = document.getElementById(canvasId);
     const vsreq = await fetch(vsPath);
     const vs = await vsreq.text();
     const fsreq = await fetch(fsPath);
     const fs = await fsreq.text();
-    draw(canvas,vs,fs);
+    if(libPath != "")
+    {
+        const libreq = await fetch(libPath);
+        const lib = await libreq.text();
+        return draw(canvas,vs,"precision mediump float;"+lib+fs);
+    }
+    return draw(canvas,vs,fs);
 }
 
 function draw(canvas,vs,fs)
@@ -57,6 +66,7 @@ function draw(canvas,vs,fs)
     params.Factor1 = gl.getUniformLocation(pogram, '_Factor1');
     params.Factor2 = gl.getUniformLocation(pogram, '_Factor2');
     params.Factor3 = gl.getUniformLocation(pogram, '_Factor3');
+    params.Tile = gl.getUniformLocation(pogram, '_Tile');
 
     // 頂点の受け渡し
     gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
@@ -79,6 +89,7 @@ function draw(canvas,vs,fs)
         gl.uniform1f(params.Factor1, Number($("#factor1").val()));
         gl.uniform1f(params.Factor2, Number($("#factor2").val()));
         gl.uniform1f(params.Factor3, Number($("#factor3").val()));
+        gl.uniform1f(params.Tile, Number($("#tile").val()));
 
         // レンダリング
         gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
