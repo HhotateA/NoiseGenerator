@@ -11,6 +11,20 @@ async function main() {
     drawAsync("preview7","shaders/v.glsl","shaders/cellular2D.glsl","shaders/webgl-noise-master/cellular2x2x2.glsl");
 }
 
+$('#canvasW').on('input', function (event) {
+    resizeCanvas();
+});
+$('#canvasH').on('input', function (event) {
+    resizeCanvas();
+});
+
+function resizeCanvas(){
+    $('canvas').each(function(i, e){
+        e.width = Number($('#canvasW').val());
+        e.height = Number($('#canvasH').val());
+    })
+}
+
 // https://developer.mozilla.org/ja/docs/Web/API/WebGLShader
 function createShader(gl, sourceCode, type) {
     const shader = gl.createShader(type);
@@ -78,10 +92,10 @@ function draw(canvas,vs,fs)
     gl.enableVertexAttribArray(attribute);
     gl.vertexAttribPointer(attribute, 3, gl.FLOAT, false, 0, 0);
 
-    gl.viewport(0, 0, canvas.width, canvas.height);
 
     // ルーチンを実行
     (function(){
+        gl.viewport(0, 0, canvas.width, canvas.height);
         gl.clear(gl.COLOR_BUFFER_BIT);
 
         // パラメータ受け渡し

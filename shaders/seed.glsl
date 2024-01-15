@@ -7,10 +7,7 @@ uniform float _Factor3;
 
 float noise(vec2 uv)
 {
-    return fract(dot(uv, vec2(_Factor1, _Factor2)) * _Factor3);
-    return dot(uv, vec2(_Factor1, _Factor2))/length(uv)*length(vec2(_Factor1, _Factor2));
-    return sin(dot(uv, vec2(_Factor1, _Factor2))) * _Factor3;
-    return fract(sin(dot(uv, vec2(_Factor1, _Factor2))) * _Factor3);
+    return dot(uv, vec2(_Factor1, _Factor2));
 }
 
 void main(void){
