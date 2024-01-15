@@ -7,7 +7,7 @@ uniform float _Factor3;
 
 float noise(vec2 uv)
 {
-    return dot(uv, vec2(_Factor1, _Factor2));
+    return dot(uv, normalize(vec2(_Factor1, _Factor2)));
 }
 
 void main(void){
