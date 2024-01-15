@@ -8,20 +8,38 @@
   </head>
   <body>
     <div>
-        <canvas id="preview1" width="300" height="300"></canvas>
-        <canvas id="preview2" width="300" height="300"></canvas>
-        <canvas id="preview3" width="300" height="300"></canvas>
-    </div>
+      <H2> シード値 </H2> uv空間を歪めたグラデーションで埋める <br>
+      <canvas id="preview1" width="300" height="300"></canvas>
+    </div> <br>
     <div>
         _Factor1:<input type="number" id="factor1" min="0" max="5000" value="0.7" step="0.01" /><br>
         _Factor2:<input type="number" id="factor2" min="0" max="5000" value="0.7" step="0.01" /><br>
-        _Factor3:<input type="number" id="factor3" min="0" max="5000" value="0.7" step="0.01" />
+        _Factor3:<input type="number" id="factor3" min="0" max="5000" value="0.7" step="0.01" /><br>
         _Tile:<input type="number" id="tile" min="0" max="100" value="10" step="1" />
-    </div>
+    </div> <br>
     <div>
-        <canvas id="preview4" width="300" height="300"></canvas>
-        <canvas id="preview5" width="300" height="300"></canvas>
-        <canvas id="preview6" width="300" height="300"></canvas>
+      <H2> 単純な乱数 </H2> シードから乱数の生成 <br>
+      <canvas id="preview2" width="300" height="300"></canvas>
+    </div> <br>
+    <div>
+      <H2> ブロックノイズ </H2> UVを段階化する。 <br>
+      <canvas id="preview3" width="300" height="300"></canvas>
+    </div> <br>
+    <div>
+      <H2> パーリンノイズ </H2> ブロックノイズを滑らかにして流れを作る <br>
+      <canvas id="preview4" width="300" height="300"></canvas>
+    </div> <br>
+    <div>
+      <H2> FBMノイズ </H2> 大きさと濃度の違う、複数のノイズを重ねる <br>
+      <canvas id="preview5" width="300" height="300"></canvas>
+    </div> <br>
+    <div>
+      <H2> カールノイズ </H2> 綺麗 <br>
+      <canvas id="preview6" width="300" height="300"></canvas>
+    </div> <br>
+    <div>
+      <H2> セルラーノイズ </H2> 綺麗 <br>
+      <canvas id="preview7" width="300" height="300"></canvas>
     </div>
     <script src="main.js"></script>
   </body>

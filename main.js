@@ -6,8 +6,9 @@ async function main() {
     drawAsync("preview2","shaders/v.glsl","shaders/simpleNoise.glsl");
     drawAsync("preview3","shaders/v.glsl","shaders/blockNoise.glsl");
     drawAsync("preview4","shaders/v.glsl","shaders/perlinNoise.glsl","shaders/webgl-noise-master/classicnoise2D.glsl");
-    drawAsync("preview5","shaders/v.glsl","shaders/simplexNoise.glsl","shaders/webgl-noise-master/noise2D.glsl");
-    drawAsync("preview6","shaders/v.glsl","shaders/cellular2D.glsl","shaders/webgl-noise-master/cellular2x2x2.glsl");
+    drawAsync("preview5","shaders/v.glsl","shaders/fbmNoise.glsl","shaders/webgl-noise-master/classicnoise2D.glsl");
+    drawAsync("preview6","shaders/v.glsl","shaders/curlNoise.glsl");
+    drawAsync("preview7","shaders/v.glsl","shaders/cellular2D.glsl","shaders/webgl-noise-master/cellular2x2x2.glsl");
 }
 
 // https://developer.mozilla.org/ja/docs/Web/API/WebGLShader
