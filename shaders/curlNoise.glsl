@@ -1,10 +1,8 @@
 precision mediump float;
 uniform float time;
 uniform vec2  resolution;
-uniform float _Factor1;
-uniform float _Factor2;
-uniform float _Factor3;
 uniform float _Tile;
+uniform float _Speed;
 
 //
 // Description : Array and textureless GLSL 2D/3D/4D simplex
@@ -147,7 +145,7 @@ vec3 curlNoise( vec3 p ){
 
 void main(void){
     vec2 uv = gl_FragCoord.xy / resolution.xy;
-    vec3 noise = curlNoise(vec3(uv*_Tile,time*_Factor3))*0.5+0.5;
+    vec3 noise = curlNoise(vec3(uv*_Tile,time*_Speed))*0.5+0.5;
     
     gl_FragColor = vec4(noise.r,noise.g,noise.b,1.0);
 }

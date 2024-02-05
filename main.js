@@ -82,6 +82,7 @@ function draw(canvas,vs,fs)
     params.Factor2 = gl.getUniformLocation(pogram, '_Factor2');
     params.Factor3 = gl.getUniformLocation(pogram, '_Factor3');
     params.Tile = gl.getUniformLocation(pogram, '_Tile');
+    params.Speed = gl.getUniformLocation(pogram, '_Speed');
 
     // 頂点の受け渡し
     gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
@@ -105,6 +106,7 @@ function draw(canvas,vs,fs)
         gl.uniform1f(params.Factor2, Number($("#factor2").val()));
         gl.uniform1f(params.Factor3, Number($("#factor3").val()));
         gl.uniform1f(params.Tile, Number($("#tile").val()));
+        gl.uniform1f(params.Speed, Number($("#speed").val()));
 
         // レンダリング
         gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
